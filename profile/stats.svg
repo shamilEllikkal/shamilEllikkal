@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="495" height="190" viewBox="0 0 495 190" role="img" aria-labelledby="title desc">
+  <title id="title">GitHub statistics for ShamilEllikkal</title>
+  <desc id="desc">Public repositories, stars, forks, followers and following.</desc>
+  <rect x="1" y="1" width="493" height="188" rx="12" fill="#0D1117" stroke="#30363D"/>
+  <text x="25" y="34" fill="#C9D1D9" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="600">GitHub Statistics</text>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <text x="25" y="77" fill="#8B949E" font-size="12">PUBLIC REPOSITORIES</text>
+    <text x="25" y="105" fill="#58A6FF" font-size="23" font-weight="700">18</text>
+    <text x="265" y="77" fill="#8B949E" font-size="12">TOTAL STARS</text>
+    <text x="265" y="105" fill="#3FB950" font-size="23" font-weight="700">0</text>
+    <text x="25" y="145" fill="#8B949E" font-size="12">FORKS</text>
+    <text x="25" y="170" fill="#D2A8FF" font-size="20" font-weight="700">0</text>
+    <text x="185" y="145" fill="#8B949E" font-size="12">FOLLOWERS</text>
+    <text x="185" y="170" fill="#F0883E" font-size="20" font-weight="700">1</text>
+    <text x="355" y="145" fill="#8B949E" font-size="12">FOLLOWING</text>
+    <text x="355" y="170" fill="#F778BA" font-size="20" font-weight="700">2</text>
+  </g>
+</svg>
