@@ -1,0 +1,106 @@
+name: Update profile statistics
+
+on:
+  schedule:
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/profile-stats.yml"
+      - ".github/scripts/generate-stats.js"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate statistics cards
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require("fs");
+            const username = "ShamilEllikkal";
+            const owner = username;
+            const repos = await github.paginate(github.rest.repos.listForUser, {
+              username,
+              type: "owner",
+              per_page: 100,
+            });
+            const publicRepos = repos.filter(repo => !repo.private && !repo.fork);
+            const user = await github.rest.users.getByUsername({ username });
+            const stars = publicRepos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+            const forks = publicRepos.reduce((sum, repo) => sum + repo.forks_count, 0);
+
+            const languages = {};
+            for (const repo of publicRepos) {
+              const result = await github.rest.repos.listLanguages({
+                owner,
+                repo: repo.name,
+              });
+              for (const [language, bytes] of Object.entries(result.data)) {
+                languages[language] = (languages[language] || 0) + bytes;
+              }
+            }
+
+            const escapeXml = value => String(value).replace(/[<>&"']/g, char => ({
+              "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;", "'": "&apos;"
+            })[char]);
+            const number = value => new Intl.NumberFormat("en-US").format(value);
+            const palette = ["#58A6FF", "#3FB950", "#D2A8FF", "#F0883E", "#F778BA", "#A5D6FF"];
+
+            const statsSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="495" height="190" viewBox="0 0 495 190" role="img" aria-labelledby="title desc">
+              <title id="title">GitHub statistics for ${username}</title>
+              <desc id="desc">Public repositories, stars, forks, followers and following.</desc>
+              <rect x="1" y="1" width="493" height="188" rx="12" fill="#0D1117" stroke="#30363D"/>
+              <text x="25" y="34" fill="#C9D1D9" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="600">GitHub Statistics</text>
+              <g font-family="Segoe UI,Arial,sans-serif">
+                <text x="25" y="77" fill="#8B949E" font-size="12">PUBLIC REPOSITORIES</text>
+                <text x="25" y="105" fill="#58A6FF" font-size="23" font-weight="700">${number(user.data.public_repos)}</text>
+                <text x="265" y="77" fill="#8B949E" font-size="12">TOTAL STARS</text>
+                <text x="265" y="105" fill="#3FB950" font-size="23" font-weight="700">${number(stars)}</text>
+                <text x="25" y="145" fill="#8B949E" font-size="12">FORKS</text>
+                <text x="25" y="170" fill="#D2A8FF" font-size="20" font-weight="700">${number(forks)}</text>
+                <text x="185" y="145" fill="#8B949E" font-size="12">FOLLOWERS</text>
+                <text x="185" y="170" fill="#F0883E" font-size="20" font-weight="700">${number(user.data.followers)}</text>
+                <text x="355" y="145" fill="#8B949E" font-size="12">FOLLOWING</text>
+                <text x="355" y="170" fill="#F778BA" font-size="20" font-weight="700">${number(user.data.following)}</text>
+              </g>
+            </svg>`;
+
+            const sorted = Object.entries(languages).sort((a, b) => b[1] - a[1]);
+            const total = sorted.reduce((sum, [, bytes]) => sum + bytes, 0);
+            const top = sorted.slice(0, 6);
+            let x = 25;
+            const barWidth = 445;
+            const segments = top.map(([language, bytes], index) => {
+              const width = total ? (bytes / total) * barWidth : 0;
+              const segment = `<rect x="${x.toFixed(2)}" y="63" width="${Math.max(0, width).toFixed(2)}" height="10" fill="${palette[index % palette.length]}"/>`;
+              x += width;
+              return segment;
+            }).join("");
+            const rows = top.map(([language, bytes], index) => {
+              const y = 105 + index * 22;
+              const percent = total ? (bytes / total * 100).toFixed(1) : "0.0";
+              return `<circle cx="31" cy="${y - 4}" r="4" fill="${palette[index % palette.length]}"/>
+                <text x="44" y="${y}" fill="#C9D1D9" font-family="Segoe UI,Arial,sans-serif" font-size="12">${escapeXml(language)}</text>
+                <text x="470" y="${y}" text-anchor="end" fill="#8B949E" font-family="Segoe UI,Arial,sans-serif" font-size="12">${percent}%</text>`;
+            }).join("");
+            const languageSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="495" height="250" viewBox="0 0 495 250" role="img" aria-labelledby="title desc">
+              <title id="title">Most used programming languages</title>
+              <desc id="desc">Language proportions calculated from public, non-fork repositories owned by ${username}.</desc>
+              <rect x="1" y="1" width="493" height="248" rx="12" fill="#0D1117" stroke="#30363D"/>
+              <text x="25" y="34" fill="#C9D1D9" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="600">Most Used Languages</text>
+              <defs><clipPath id="barClip"><rect x="25" y="63" width="445" height="10" rx="5"/></clipPath></defs>
+              <g clip-path="url(#barClip)"><rect x="25" y="63" width="445" height="10" fill="#30363D"/>${segments}</g>
+              ${rows || '<text x="25" y="110" fill="#8B949E" font-family="Segoe UI,Arial,sans-serif" font-size="12">No language data available yet.</text>'}
+              <text x="25" y="232" fill="#6E7681" font-family="Segoe UI,Arial,sans-serif" font-size="10">Based on public repositories · Updated daily</text>
+            </svg>`;
+
+            fs.mkdirSync("profile", { recursive: true });
+            fs.writeFileSync("profile/stats.svg", statsSvg);
+            fs.writeFileSync("profile/top-languages.svg", languageSvg);
+            core.info(`Generated cards from ${publicRepos.length} public, non-fork repositories.`);
