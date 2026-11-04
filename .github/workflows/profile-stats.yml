@@ -22,7 +22,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const fs = require("fs");
             const username = "ShamilEllikkal";
             const owner = username;
             const repos = await github.paginate(github.rest.repos.listForUser, {
@@ -100,7 +99,29 @@ jobs:
               <text x="25" y="232" fill="#6E7681" font-family="Segoe UI,Arial,sans-serif" font-size="10">Based on public repositories · Updated daily</text>
             </svg>`;
 
-            fs.mkdirSync("profile", { recursive: true });
-            fs.writeFileSync("profile/stats.svg", statsSvg);
-            fs.writeFileSync("profile/top-languages.svg", languageSvg);
+            async function publish(path, svg) {
+              let sha;
+              try {
+                const existing = await github.rest.repos.getContent({
+                  owner,
+                  repo: context.repo.repo,
+                  path,
+                });
+                if (!Array.isArray(existing.data)) sha = existing.data.sha;
+              } catch (error) {
+                if (error.status !== 404) throw error;
+              }
+
+              await github.rest.repos.createOrUpdateFileContents({
+                owner,
+                repo: context.repo.repo,
+                path,
+                message: `Update ${path}`,
+                content: Buffer.from(svg).toString("base64"),
+                ...(sha ? { sha } : {}),
+              });
+            }
+
+            await publish("profile/stats.svg", statsSvg);
+            await publish("profile/top-languages.svg", languageSvg);
             core.info(`Generated cards from ${publicRepos.length} public, non-fork repositories.`);
