@@ -100,10 +100,10 @@ I'm a Computer Science Engineering student and full-stack developer interested i
 <div align="center">
 
 <a href="https://github.com/ShamilEllikkal">
-  <img height="170" src="https://github-readme-stats.vercel.app/api?username=ShamilEllikkal&show_icons=true&hide_border=true&rank_icon=github&include_all_commits=true" alt="GitHub statistics" />
+  <img height="170" src="https://raw.githubusercontent.com/ShamilEllikkal/ShamilEllikkal/main/profile/stats.svg" alt="GitHub statistics" />
 </a>
 <a href="https://github.com/ShamilEllikkal">
-  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ShamilEllikkal&layout=compact&hide_border=true&langs_count=8" alt="Most used languages" />
+  <img height="170" src="https://raw.githubusercontent.com/ShamilEllikkal/ShamilEllikkal/main/profile/top-languages.svg" alt="Most used languages" />
 </a>
 
 <br/>
