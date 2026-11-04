@@ -1,72 +1,114 @@
-<!-- Profile README for https://github.com/shamilEllikkal -->
+<!--
+  GitHub profile README
+  Repository: https://github.com/ShamilEllikkal/ShamilEllikkal
+-->
 
 <div align="center">
 
-# Shamil E
+# SHAMIL E
 
-### Full-Stack Developer · Computer Science Engineering Student
+**Full-Stack Developer · Computer Science Engineering Student**
 
-I build web applications with a focus on useful features, clean interfaces, and reliable backend systems.
+Building thoughtful web experiences and practical software.
 
-[![GitHub](https://img.shields.io/badge/GitHub-ShamilEllikkal-181717?style=flat&logo=github)](https://github.com/ShamilEllikkal)
+<br/>
+
+<a href="https://github.com/ShamilEllikkal">
+  <img src="https://img.shields.io/badge/GitHub-ShamilEllikkal-161B22?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" />
+</a>
+<a href="https://github.com/ShamilEllikkal?tab=repositories">
+  <img src="https://img.shields.io/badge/Repositories-Explore-161B22?style=for-the-badge&logo=git&logoColor=white" alt="Explore repositories" />
+</a>
 
 </div>
 
 ---
 
-## About
+## Profile
 
-- Computer Science Engineering student based in Kerala, India.
-- Interested in full-stack web development and building practical products.
-- Worked with the MERN stack and modern React-based frameworks.
-- IEEE MEA SB Webmaster, contributing to the student branch's web presence.
-- MERN Stack Developer Intern at **Tefora Software Solutions LLP** (June 2025).
+I'm a Computer Science Engineering student and full-stack developer interested in building useful, maintainable web applications. I enjoy working across the stack — from shaping user interfaces to designing APIs and integrating databases.
 
-## Tech I work with
+- Currently focused on **full-stack web development**
+- Experience building with the **MERN stack** and **Next.js**
+- **Webmaster**, IEEE MEA Student Branch
+- Former **MERN Stack Developer Intern**, Tefora Software Solutions LLP
 
-**Frontend**  
-React · Next.js · JavaScript · TypeScript · HTML · CSS · Tailwind CSS · Material UI
+## Technology
 
-**Backend**  
-Node.js · Express.js · REST APIs · JWT authentication
+<div align="center">
 
-**Data & services**  
-MongoDB · Mongoose · Firebase · Supabase · Cloudinary
+**Frontend**
 
-**Tools**  
-Git · GitHub · Vite
+<img src="https://skillicons.dev/icons?i=react,nextjs,js,ts,html,css,tailwind,materialui" alt="Frontend technologies" />
 
-## Selected projects
+**Backend & data**
 
-### [HealthConnect](https://github.com/ShamilEllikkal/healthConnect-frontend)
-A healthcare appointment booking application built as a multi-repository project, with a React frontend, Express backend, and separate admin interface.
+<img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,firebase,supabase" alt="Backend and database technologies" />
 
-- [Frontend](https://github.com/ShamilEllikkal/healthConnect-frontend)
-- [Backend](https://github.com/ShamilEllikkal/healthConnect-backend)
-- [Admin frontend](https://github.com/ShamilEllikkal/healthConnect_admin-frontend)
+**Tools**
 
-### [Celeva](https://github.com/ShamilEllikkal/celeva)
-A talent discovery and booking platform built with Next.js, TypeScript, Tailwind CSS, and MongoDB.
+<img src="https://skillicons.dev/icons?i=git,github,vite,vscode" alt="Development tools" />
 
-### YEMQPro
-An employer–employee management platform built with Next.js, Supabase, Tailwind CSS, and Cloudinary.
+</div>
 
-### StudyCo
-An educational web application built with React, Vite, and Firebase.
+## Featured work
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/ShamilEllikkal/healthConnect-frontend">HealthConnect</a></h3>
+      <p>A healthcare appointment platform developed as a multi-part application, with a user-facing frontend, backend API, and admin interface.</p>
+      <p><strong>Stack:</strong> React · Node.js · Express · MongoDB</p>
+      <p>
+        <a href="https://github.com/ShamilEllikkal/healthConnect-frontend">Frontend</a> ·
+        <a href="https://github.com/ShamilEllikkal/healthConnect-backend">Backend</a> ·
+        <a href="https://github.com/ShamilEllikkal/healthConnect_admin-frontend">Admin</a>
+      </p>
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/ShamilEllikkal/celeva">Celeva</a></h3>
+      <p>A talent discovery and booking platform with profile browsing, booking flows, authentication, and subscription functionality.</p>
+      <p><strong>Stack:</strong> Next.js · TypeScript · Tailwind CSS · MongoDB</p>
+      <p><a href="https://github.com/ShamilEllikkal/celeva">View repository →</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/ShamilEllikkal/hostel_management_java">Hostel Management System</a></h3>
+      <p>A desktop application for student records, room allocation, occupancy tracking, and hostel administration.</p>
+      <p><strong>Stack:</strong> Java · Swing · SQLite</p>
+      <p><a href="https://github.com/ShamilEllikkal/hostel_management_java">View repository →</a></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/ShamilEllikkal/cafe_management">Cafe Management</a></h3>
+      <p>A web application project built with the Next.js ecosystem.</p>
+      <p><strong>Stack:</strong> Next.js · TypeScript</p>
+      <p><a href="https://github.com/ShamilEllikkal/cafe_management">View repository →</a></p>
+    </td>
+  </tr>
+</table>
 
 ## Experience & community
 
-- **MERN Stack Developer Intern** — Tefora Software Solutions LLP  
-  June 2025
-- **Webmaster** — IEEE MEA Student Branch  
-  Contributing to web development and the branch's online presence.
+| Role | Organization | Period |
+|:--|:--|:--|
+| MERN Stack Developer Intern | Tefora Software Solutions LLP | Jun 2025 |
+| Webmaster | IEEE MEA Student Branch | Current |
 
-## GitHub activity
+## GitHub
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=ShamilEllikkal&show_icons=true&hide_border=true&rank_icon=github" alt="GitHub statistics" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ShamilEllikkal&layout=compact&hide_border=true" alt="Most used languages" />
+<a href="https://github.com/ShamilEllikkal">
+  <img height="170" src="https://github-readme-stats.vercel.app/api?username=ShamilEllikkal&show_icons=true&hide_border=true&rank_icon=github&include_all_commits=true" alt="GitHub statistics" />
+</a>
+<a href="https://github.com/ShamilEllikkal">
+  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ShamilEllikkal&layout=compact&hide_border=true&langs_count=8" alt="Most used languages" />
+</a>
+
+<br/>
+
+<img src="https://streak-stats.demolab.com?user=ShamilEllikkal&hide_border=true" alt="GitHub contribution streak" />
 
 </div>
 
@@ -74,6 +116,6 @@ An educational web application built with React, Vite, and Firebase.
 
 <div align="center">
 
-*Always learning, building, and improving.*
+*Learning continuously. Building with purpose.*
 
 </div>
